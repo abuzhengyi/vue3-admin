@@ -1,0 +1,11 @@
+/** 此处 vscode 插件配置需要安装 ESLint、Prettier 两个插件启用 */
+{
+  // 开启 ESLint 自动修复
+  "editor.codeActionsOnSave": {
+    "source.fixAll": false,
+    "source.fixAll.eslint": true
+  },
+  // 保存的时候自动使用 Prettier 格式化
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

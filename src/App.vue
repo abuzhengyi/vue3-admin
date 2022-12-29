@@ -31,6 +31,4 @@ const messageConfig = reactive({
 })
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

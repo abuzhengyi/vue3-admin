@@ -20,24 +20,47 @@
 @each $value in 5, 10, 20, 30, 40, 50, 100 {
   @each $padding, $margin in (p, m), (pt, mt), (pr, mr), (pb, mb), (pl, ml) {
     .#{$padding}-#{$value} {
-      @if $padding == p { padding: #{$value}px }
-      @if $padding == pt { padding-top: #{$value}px }
-      @if $padding == pr { padding-right: #{$value}px }
-      @if $padding == pb { padding-bottom: #{$value}px }
-      @if $padding == pl { padding-left: #{$value}px }
+      @if $padding == p {
+        padding: #{$value}px;
+      }
+      @if $padding == pt {
+        padding-top: #{$value}px;
+      }
+      @if $padding == pr {
+        padding-right: #{$value}px;
+      }
+      @if $padding == pb {
+        padding-bottom: #{$value}px;
+      }
+      @if $padding == pl {
+        padding-left: #{$value}px;
+      }
     }
     .#{$margin}-#{$value} {
-      @if $margin == m { margin: #{$value}px }
-      @if $margin == mt { margin-top: #{$value}px }
-      @if $margin == mr { margin-right: #{$value}px }
-      @if $margin == mb { margin-bottom: #{$value}px }
-      @if $margin == ml { margin-left: #{$value}px }
+      @if $margin == m {
+        margin: #{$value}px;
+      }
+      @if $margin == mt {
+        margin-top: #{$value}px;
+      }
+      @if $margin == mr {
+        margin-right: #{$value}px;
+      }
+      @if $margin == mb {
+        margin-bottom: #{$value}px;
+      }
+      @if $margin == ml {
+        margin-left: #{$value}px;
+      }
     }
   }
 }
 
 // justify-content、align-items
-@each $direction, $first, $last in (h, flex, start), (h, flex, end), (h, space, around), (h, space, between), (h, space, evenly), (h, false, center), (v, flex, start), (v, flex, end), (v, false, center) {
+@each $direction, $first, $last in (h, flex, start), (h, flex, end), (h, space, around),
+  (h, space, between), (h, space, evenly), (h, false, center), (v, flex, start), (v, flex, end),
+  (v, false, center)
+{
   .flex-#{$direction}#{$last} {
     @if $direction == h {
       @if $first {

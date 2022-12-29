@@ -1,37 +1,23 @@
 <template>
   <div class="login">
     <div class="login-left">
-      <img class="login__logo" 
-        :src="logoUrl" 
-        alt="logo"
-      />
+      <img class="login__logo" :src="logoUrl" alt="logo" />
       <div class="login__describe">
         一个基于 Vue3、 Element Plus、TypeScript、Vite、Pinia 等主流技术的后台管理系统基础解决方案.
       </div>
-      <div class="login__copyright">
-        Copyright &copy; 2022 版权所有xxx有限责任公司
-      </div>
+      <div class="login__copyright">Copyright &copy; 2022 版权所有xxx有限责任公司</div>
     </div>
     <div class="login-right">
       <div class="login-form">
         <div class="login-form__title">登录</div>
-        <el-form 
-          class="login-form-wrap" 
-          ref="formRef" 
-          :model="form" 
-          :rules="rules"
-        >
-          <el-form-item 
-            class="form-item" 
-            prop="account" 
-            label="账号："
-          >
-            <el-input 
-              v-model="form.account" 
-              type="text" 
-              placeholder="请输入账号" 
-              :autofocus="!autofocus" 
-              clearable 
+        <el-form class="login-form-wrap" ref="formRef" :model="form" :rules="rules">
+          <el-form-item class="form-item" prop="account" label="账号：">
+            <el-input
+              v-model="form.account"
+              type="text"
+              placeholder="请输入账号"
+              :autofocus="!autofocus"
+              clearable
               @keyup.enter="handleLogin"
             >
               <template #prefix>
@@ -41,18 +27,14 @@
               </template>
             </el-input>
           </el-form-item>
-          <el-form-item 
-            class="form-item" 
-            prop="password" 
-            label="密码："
-          >
-            <el-input 
-              v-model="form.password" 
-              type="password" 
-              placeholder="请输入密码" 
-              :autofocus="autofocus" 
-              show-password 
-              clearable 
+          <el-form-item class="form-item" prop="password" label="密码：">
+            <el-input
+              v-model="form.password"
+              type="password"
+              placeholder="请输入密码"
+              :autofocus="autofocus"
+              show-password
+              clearable
               @keyup.enter="handleLogin"
             >
               <template #prefix>
@@ -69,7 +51,9 @@
             </div>
           </el-form-item>
           <el-form-item class="form-item">
-            <el-button class="form-item" type="primary" :loading="loading" @click="handleLogin">{{ `登录 ${ loading ? '...' : '' }` }}</el-button>
+            <el-button class="form-item" type="primary" :loading="loading" @click="handleLogin">{{
+              `登录 ${loading ? '...' : ''}`
+            }}</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -84,46 +68,41 @@ import logoUrl from '@/assets/images/common/logo-text.svg'
 
 const { login } = useUserStore()
 
-const title = import.meta.env.VITE_APP_TITLE
 const rememberMe = ref(false)
 const form = reactive(<LoginData>{})
 const rules = reactive({
   account: [
-    { 
-      required: true, 
-      message: '请输入账号', 
-      trigger: ['blur', 'change'] 
+    {
+      required: true,
+      message: '请输入账号',
+      trigger: ['blur', 'change']
     },
-    { 
-      validator: (rule: any, value: string, callback: Function) => {
+    {
+      validator: (rule: any, value: string, callback: any) => {
         if (!/^\w{6,14}$/.test(value)) {
-          callback(
-            new Error('账号应以字母开头，长度6-14位的大小写字母、数字、下划线组合')
-          );
+          callback(new Error('账号应以字母开头，长度6-14位的大小写字母、数字、下划线组合'))
         } else {
-          callback();
+          callback()
         }
       },
-      trigger: ['blur', 'change'] 
+      trigger: ['blur', 'change']
     }
   ],
   password: [
-    { 
-      required: true, 
-      message: '请输入密码', 
-      trigger: ['blur', 'change'] 
+    {
+      required: true,
+      message: '请输入密码',
+      trigger: ['blur', 'change']
     },
-    { 
-      validator: (rule: any, value: string, callback: Function) => {
+    {
+      validator: (rule: any, value: string, callback: any) => {
         if (!/^\w{6,14}$/.test(value)) {
-          callback(
-            new Error('密码长度应为6-14位，且仅包含大小写字母、数字、下划线')
-          );
+          callback(new Error('密码长度应为6-14位，且仅包含大小写字母、数字、下划线'))
         } else {
-          callback();
+          callback()
         }
       },
-      trigger: ['blur', 'change'] 
+      trigger: ['blur', 'change']
     }
   ]
 })
@@ -131,16 +110,14 @@ const autofocus = computed(() => form.account?.length)
 const loading = ref(false)
 const formRef = ref<FormInstance | null>(null)
 const handleLogin = async () => {
-  if (
-    await formRef.value?.validate(valid => valid)
-  ) {
-    loading.value = true;
+  if (await formRef.value?.validate((valid) => valid)) {
+    loading.value = true
     login(form)
       .catch(() => {
         // 避免控制台错误提示
       })
       .finally(() => {
-        loading.value = false;
+        loading.value = false
       })
   }
 }
@@ -156,7 +133,7 @@ const handleLogin = async () => {
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    background: #f7faff url("@/assets/images/login/login-map.png") no-repeat 20% 80% / 100% 80%;
+    background: #f7faff url('@/assets/images/login/login-map.png') no-repeat 20% 80% / 100% 80%;
   }
   &__logo {
     height: 40px;
@@ -181,7 +158,7 @@ const handleLogin = async () => {
   &-right {
     position: relative;
     width: 30%;
-    background: #0672ff url("@/assets/images/login/login-build.png") no-repeat 0 0 / 100% 100%;
+    background: #0672ff url('@/assets/images/login/login-build.png') no-repeat 0 0 / 100% 100%;
   }
   &-form {
     @extend .p-20;

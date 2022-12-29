@@ -3,13 +3,18 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": {
+    "name": "abuzhengyi",
+    "email": "1553384775@qq.com",
+    "url": "https://github.com/abuzhengyi"
+  },
   "scripts": {
     "dev": "vite",
     "build:staging": "vue-tsc --noEmit && vite build --mode staging",
     "build:production": "vue-tsc --noEmit && vite build",
     "preview:staging": "npm run build:staging && vite preview",
     "preview:production": "npm run build:production && vite preview",
-    "lint:eslint": "eslint --cache --max-warnings 0 \"src/**/*.{vue,js,jsx,ts,tsx}\" --fix",
+    "lint:eslint": "eslint src --ext .vue,.js,.ts,.jsx,.tsx --fix",
     "lint:prettier": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue}\"",
     "lint": "npm run lint:eslint && npm run lint:prettier"
   },
@@ -36,8 +41,9 @@
     "@typescript-eslint/parser": "^5.47.1",
     "@vitejs/plugin-vue": "^4.0.0",
     "eslint": "^8.30.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.8.0",
-    "prettier": "^2.8.1",
+    "prettier": "2.8.1",
     "sass": "^1.56.2",
     "typescript": "^4.9.3",
     "unplugin-auto-import": "^0.12.1",

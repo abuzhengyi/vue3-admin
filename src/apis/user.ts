@@ -7,17 +7,12 @@ export interface LoginData {
   password: string
 }
 
-export const sendLogin = (
-  {
-    account,
-    password
-  }: LoginData
-) => {
-  password &&= md5(password);
+export const sendLogin = ({ account, password }: LoginData) => {
+  password &&= md5(password)
   return post('/login', {
     account,
     password
-  });
+  })
 }
 
 /** 退出登录 */

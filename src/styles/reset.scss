@@ -1,13 +1,69 @@
 /** 样式重置 */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center, image,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td, *::after, *::before {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+image,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   border: 0;
@@ -15,23 +71,25 @@ table, caption, tbody, tfoot, thead, tr, th, td, *::after, *::before {
   box-sizing: border-box;
 }
 
-ol, ul {
-  list-style:none;
+ol,
+ul {
+  list-style: none;
 }
 
-a{
-  text-decoration:none;
+a {
+  text-decoration: none;
 }
 
 img {
   vertical-align: top;
 }
 
-span, a { 
+span,
+a {
   display: inline-block;
 }
 
-input::-webkit-outer-spin-button, 
+input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   appearance: none;

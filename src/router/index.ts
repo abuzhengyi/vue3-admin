@@ -1,8 +1,4 @@
-import { 
-  createRouter, 
-  createWebHashHistory, 
-  createWebHistory 
-} from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
 const { VITE_HISTORY_MODE } = import.meta.env
@@ -16,7 +12,8 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: '首页'
     }
-  }, {
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('@/views/login/index.vue'),
@@ -28,10 +25,7 @@ const routes: RouteRecordRaw[] = [
 
 /** 创建 router 实例 */
 const router = createRouter({
-  history: VITE_HISTORY_MODE === 'hash' 
-    ? createWebHashHistory()
-    : createWebHistory()
-  ,
+  history: VITE_HISTORY_MODE === 'hash' ? createWebHashHistory() : createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
     // 保存返回页面滚动位置

@@ -4,17 +4,46 @@
     "es2021": true
   },
   "globals": {
+    /** vue */
+    "ref": "readonly",
+    "reactive": "readonly",
+    "computed": "readonly",
+    "readonly": "readonly",
+    "watchEffect": "readonly",
+    "watchPostEffect": "readonly",
+    "watchSyncEffect": "readonly",
+    "watch": "readonly",
+    "isRef": "readonly",
+    "unref": "readonly",
+    "toRef": "readonly",
+    "toRefs": "readonly",
+    "isProxy": "readonly",
+    "isReactive": "readonly",
+    "isReadonly": "readonly",
+    "onMounted": "readonly",
+    "onUpdated": "readonly",
+    "onUnmounted": "readonly",
+    "onBeforeMount": "readonly",
+    "onBeforeUpdate": "readonly",
+    "onBeforeUnmount": "readonly",
+    "onErrorCaptured": "readonly",
+    "onRenderTracked": "readonly",
+    "onRenderTriggered": "readonly",
+    "onActivated": "readonly",
+    "onDeactivated": "readonly",
+    "onServerPrefetch": "readonly",
     "defineProps": "readonly",
     "defineEmits": "readonly",
-    "defineExpose": "readonly"
+    "defineExpose": "readonly",
+    /** Element Plus */
+    "FormInstance": "readonly"
   },
   "extends": [
     "eslint:recommended",
     "plugin:vue/vue3-essential",
     "plugin:@typescript-eslint/recommended"
   ],
-  "overrides": [
-  ],
+  "overrides": [],
   // 用来解析 .vue 后缀文件中 template 内的代码
   "parser": "vue-eslint-parser",
   "parserOptions": {
@@ -23,56 +52,15 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "vue",
-    "@typescript-eslint"
-  ],
+  "plugins": ["vue", "@typescript-eslint"],
   "rules": {
-    // TS
-    "@typescript-eslint/no-explicit-any": "off",
-    "no-debugger": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/ban-types": "off",
-    "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_"
-      }
-    ],
-    "no-unused-vars": [
-      "error",
-      {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_"
-      }
-    ],
-    // Vue
-    "vue/no-v-html": "off",
-    "vue/require-default-prop": "off",
-    "vue/require-explicit-emits": "off",
+    /** Vue */
+    // 组件名称
     "vue/multi-word-component-names": "off",
-    "vue/html-self-closing": [
-      "error",
-      {
-        "html": {
-          "void": "always",
-          "normal": "always",
-          "component": "always"
-        },
-        "svg": "always",
-        "math": "always"
-      }
-    ],
-    // Prettier
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ]
+    /** TS */
+    // 已定义但未使用的变量
+    "@typescript-eslint/no-unused-vars": "off",
+    // 使用 any 类型
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
