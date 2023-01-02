@@ -8,45 +8,36 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 
-const pathResolve = (dir = ''): string => (
-  resolve(__dirname, '.', dir)
-)
+const pathResolve = (dir = ''): string => resolve(__dirname, '.', dir)
 
 export default ({ command, mode }: ConfigEnv) => {
-  const dev = mode === 'development';
-  const { 
-    VITE_APP_TITLE,
-    VITE_BASE_URL,
-    VITE_PROXY_SERVER
-  } = loadEnv(mode, process.cwd());
-  
+  const dev = mode === 'development'
+  const { VITE_APP_TITLE, VITE_BASE_URL, VITE_PROXY_SERVER } = loadEnv(mode, process.cwd())
+
   return {
     base: './',
     resolve: {
       alias: {
         '@': pathResolve('src')
       },
-      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.scss'],
+      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.scss']
     },
     // 开发环境下根据`.env`配置决定是否开启代理
-    server: (
-      (
-        dev && VITE_PROXY_SERVER === 'true'
-      ) ? {
-        port: 80,
-        proxy: {
-          '/api': {
-            target: VITE_BASE_URL,
-            rewrite: (path: string) => path.replace(/^\/api/, ''),
-            changeOrigin: true
+    server:
+      dev && VITE_PROXY_SERVER === 'true'
+        ? {
+            port: 80,
+            proxy: {
+              '/api': {
+                target: VITE_BASE_URL,
+                rewrite: (path: string) => path.replace(/^\/api/, ''),
+                changeOrigin: true
+              }
+            },
+            host: '0.0.0.0',
+            cors: true
           }
-        },
-        host: '0.0.0.0',
-        cors: true
-      } : {
-  
-      }
-    ),
+        : {},
     plugins: [
       vue(),
       createHtmlPlugin({
@@ -63,9 +54,7 @@ export default ({ command, mode }: ConfigEnv) => {
       // 自动导入 Vue 、Element Plus 方法
       AutoImport({
         imports: ['vue'],
-        resolvers: [
-          ElementPlusResolver(),
-        ],
+        resolvers: [ElementPlusResolver()],
         dts: pathResolve('types/auto-imports.d.ts')
       }),
       // 自动导入 Element Plus、Icon 组件
@@ -88,7 +77,7 @@ export default ({ command, mode }: ConfigEnv) => {
     ],
     css: {
       modules: {
-        scopeBehaviour: 'local',
+        scopeBehaviour: 'local'
       },
       preprocessorOptions: {
         scss: {
