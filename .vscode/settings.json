@@ -1,4 +1,4 @@
-/** 此处 vscode 插件配置需要安装 ESLint、Prettier 两个插件启用 */
+/** 此处 VSCode 插件配置需要安装 ESLint、Prettier 两个插件启用 */
 {
   // 开启 ESLint 自动修复
   "editor.codeActionsOnSave": {
