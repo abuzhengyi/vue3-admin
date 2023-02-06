@@ -133,7 +133,7 @@ const handleLogin = async () => {
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    background: #f7faff url('@/assets/images/login/login-map.png') no-repeat 20% 80% / 100% 80%;
+    background: #f7faff url('@/assets/images/login/map.png') no-repeat 20% 80% / 100% 80%;
   }
   &__logo {
     height: 40px;
@@ -158,7 +158,7 @@ const handleLogin = async () => {
   &-right {
     position: relative;
     width: 30%;
-    background: #0672ff url('@/assets/images/login/login-build.png') no-repeat 0 0 / 100% 100%;
+    background: #0672ff url('@/assets/images/login/build.png') no-repeat 0 0 / 100% 100%;
   }
   &-form {
     @extend .p-20;

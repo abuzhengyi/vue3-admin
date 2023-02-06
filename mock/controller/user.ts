@@ -1,5 +1,8 @@
 const data = {
-  token: 'xxx'
+  name: 'admin',
+  avatar: '',
+  account: 'admin1',
+  token: 'ki98hgh09gfjksiwutryw'
 }
 
 export const login = {
