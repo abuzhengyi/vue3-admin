@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <layout-header />
     <div class="home-content">
       <!-- 用户信息展示、notice 通知 -->
       <div class="user">
@@ -64,13 +63,10 @@
         </div>
       </div>
     </div>
-    <layout-footer />
   </div>
 </template>
 
 <script setup lang="ts">
-import LayoutHeader from '@/layout/components/LayoutHeader.vue'
-import LayoutFooter from '@/layout/components/LayoutFooter.vue'
 import { useUserStore } from '@/store/modules/user'
 import { getNoticeList, getStatisticsList } from '@/apis/system'
 import router from '@/router'

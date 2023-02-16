@@ -57,7 +57,7 @@
   }
 }
 
-// justify-content、align-items
+/** justify-content、align-items */
 @each $direction, $first, $last in (h, flex, start), (h, flex, end), (h, space, around),
   (h, space, between), (h, space, evenly), (h, false, center), (v, flex, start), (v, flex, end),
   (v, false, center)
@@ -77,4 +77,21 @@
       }
     }
   }
+}
+
+/** hover */
+.hover {
+  cursor: pointer;
+  &:hover {
+    color: var(--el-color-primary);
+  }
+}
+
+/** height */
+.h-100 {
+  height: 100%;
+}
+
+.h-0 {
+  height: 0;
 }
