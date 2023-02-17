@@ -20,6 +20,14 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: 'center',
+        name: 'center',
+        component: () => import('@/views/center/index.vue'),
+        meta: {
+          title: '个人中心'
+        }
+      },
+      {
         path: 'menu',
         name: 'menu',
         redirect: {

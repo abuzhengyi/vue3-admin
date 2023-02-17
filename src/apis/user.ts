@@ -16,8 +16,4 @@ export const sendLogin = ({ account, password }: LoginData) => {
 }
 
 /** 退出登录 */
-export interface LogoutData {
-  account: string
-}
-
-export const sendLogout = (data: LogoutData) => post('/login', data)
+export const sendLogout = () => post('/logout')

@@ -1,8 +1,8 @@
 import { ref } from 'vue'
+import router from '@/router'
 import store from '@/store'
 import { defineStore } from 'pinia'
-import { sendLogin, sendLogout, type LoginData, type LogoutData } from '@/apis/user'
-import router from '@/router'
+import { sendLogin, sendLogout, type LoginData } from '@/apis/user'
 import defaultAvatar from '@/assets/images/user/avatar.png'
 
 export const useUserStore = defineStore(
@@ -35,10 +35,12 @@ export const useUserStore = defineStore(
     }
 
     // 退出登录
-    const logout = (data: LogoutData) => {
-      sendLogout(data).then(
+    const logout = () => {
+      sendLogout().then(
         () => {
-          // ...
+          router.replace({
+            name: 'login'
+          })
         },
         () => {
           // ...
