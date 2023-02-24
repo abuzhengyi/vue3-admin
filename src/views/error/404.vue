@@ -29,23 +29,28 @@ const backHome = () => {
 <style scoped lang="scss">
 .not-found {
   @extend .absolute;
+
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #fff;
   color: var(--el-text-color-secondary);
+  background-color: #fff;
+
   &-content {
     position: relative;
     width: 520px;
     margin: 0 auto;
   }
+
   &-tip {
     @extend .flex, .flex-vcenter, .flex-hcenter;
   }
+
   &__image {
     width: 100%;
   }
+
   &__text,
   .el-button {
     font-size: var(--el-font-size-medium);

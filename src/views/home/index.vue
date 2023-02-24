@@ -131,29 +131,36 @@ getStatistics()
 <style scoped lang="scss">
 .home {
   @extend .pt-20, .pb-20;
+
   width: 82%;
   margin: 0 auto;
 }
 
 .user {
   @extend .flex, .flex-vcenter, .pl-20, .pr-20;
+
   height: 52px;
-  border-radius: var(--el-border-radius-base);
   background: #fff url('@/assets/images/home/work.png') no-repeat right center / 136px auto;
+  border-radius: var(--el-border-radius-base);
+
   &__account {
     @extend .ml-5;
+
     font-size: var(--el-font-size-extra-small);
     font-weight: bold;
     color: #323335;
   }
+
   .el-carousel {
     @extend .flex-1;
+
     margin-right: 70px;
-    line-height: 20px;
-    text-align: right;
     font-size: var(--el-font-size-small);
+    line-height: 20px;
     color: var(--el-text-color-regular);
+    text-align: right;
   }
+
   .notice__link {
     @extend .pr-5;
   }
@@ -161,63 +168,83 @@ getStatistics()
 
 .data {
   @extend .p-20, .mt-20;
+
   background-color: #fff;
+
   &-top {
     @extend .flex;
+
     justify-content: space-between;
   }
+
   &__date {
     @extend .inline-flex;
     @extend .flex-vcenter;
+
     font-size: var(--el-font-size-small);
   }
+
   &__title {
     font-size: var(--el-font-size-large);
     font-weight: bold;
   }
+
   &-grid {
     @extend .flex, .mt-50, .mb-50;
+
     justify-content: space-between;
+
     &-item {
       @extend .relative, .inline-flex, .p-20;
-      flex-direction: column;
+
       width: 30%;
-      border-radius: var(--el-border-radius-base);
-      background-color: #f8f8f9;
       cursor: pointer;
+      background-color: #f8f8f9;
+      border-radius: var(--el-border-radius-base);
+      flex-direction: column;
+
       &__label {
         font-size: var(--el-font-size-small);
         color: var(--el-text-color-secondary);
       }
+
       &__scale {
         font-size: var(--el-font-size-small);
         font-weight: bold;
+
         &--rise {
           color: var(--el-color-danger);
         }
+
         &--fall {
           color: var(--el-color-success);
         }
       }
+
       &__value {
         margin: 3px 0;
         font-size: var(--el-font-size-large);
         font-weight: bold;
       }
+
       &__liner {
         @extend .absolute;
+
         bottom: 0;
         left: 0;
         width: 100%;
         height: 2px;
       }
+
       &--active {
         &:nth-child(1) {
           background-color: var(--el-color-warning-light-9);
         }
+
         &:nth-child(2) {
           background-color: var(--el-color-primary-light-9);
         }
+
         &:nth-child(3) {
           background-color: var(--el-color-success-light-9);
         }

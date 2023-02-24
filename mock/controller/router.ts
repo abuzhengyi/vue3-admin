@@ -15,9 +15,9 @@ const data = [
 export default {
   url: '/menu',
   method: 'post',
-  response: { 
-    code: 200, 
-    messages: 'success', 
-    data 
+  response: {
+    code: 200,
+    messages: 'success',
+    data
   }
 }

@@ -6,11 +6,11 @@
 
 <style scoped lang="scss">
 .el-footer {
-  padding: 0;
   height: var(--v3-footer-height);
-  text-align: center;
+  padding: 0;
   line-height: var(--v3-footer-height);
   color: var(--el-text-color-secondary);
+  text-align: center;
   user-select: none;
 }
 </style>

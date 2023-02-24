@@ -94,7 +94,7 @@ const handleDropdown = (command: string) => {
 
 /** 一级 tab 菜单 */
 // 一级菜单列表
-const menuList = computed<any[]>(() => router.getRoutes().filter((item) => item.meta?.menu))
+const menuList = computed<any[]>(() => router.getRoutes().filter(item => item.meta?.menu))
 
 // 当前激活菜单 name
 const activeMenu = computed<any>(() => {
@@ -117,7 +117,9 @@ const handleMenu = (pane: TabsPaneContext) => {
 <style scoped lang="scss">
 .el-header {
   --el-header-height: var(--v3-header-height);
+
   @extend .flex, .flex-vcenter, .pr-20;
+
   z-index: 1001;
   padding-left: 0;
   background-color: #fff;
@@ -136,9 +138,10 @@ const handleMenu = (pane: TabsPaneContext) => {
 .header {
   &-logo {
     @extend .flex, .flex-hcenter;
+
     width: var(--v3-aside-width);
-    transition: width linear 300ms;
     overflow: hidden;
+    transition: width linear 300ms;
 
     &__image {
       height: 36px;
@@ -153,6 +156,7 @@ const handleMenu = (pane: TabsPaneContext) => {
 
     &--spread {
       @extend .flex-hcenter;
+
       width: var(--v3-aside-width-collapse);
       padding-left: 0;
     }
@@ -167,10 +171,12 @@ const handleMenu = (pane: TabsPaneContext) => {
   &-tools {
     @extend .flex;
     @extend .flex-vcenter;
+
     margin-right: var(--spacing-base);
 
     &-item {
       @extend .flex, .flex-hcenter, .flex-vcenter, .hover, .pl-10, .pr-10;
+
       min-height: 40px;
       font-size: var(--el-font-size-large);
       cursor: pointer;
@@ -178,6 +184,7 @@ const handleMenu = (pane: TabsPaneContext) => {
 
     &-name {
       @extend .flex, .flex-hcenter, .pl-5, .pr-5;
+
       flex-direction: column;
     }
 
@@ -188,15 +195,16 @@ const handleMenu = (pane: TabsPaneContext) => {
     &__user {
       max-width: 100px;
       overflow: hidden;
-      text-overflow: ellipsis;
       font-size: var(--el-font-size-base);
+      text-overflow: ellipsis;
       white-space: nowrap;
     }
 
     &-logout {
       @extend .flex, .flex-vcenter, .flex-hbetween;
-      height: 100%;
+
       flex: 1;
+      height: 100%;
     }
 
     &__arrow {

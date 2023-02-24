@@ -71,15 +71,17 @@ const handleMenu = (name: RouteRecordName) => {
 <style scoped lang="scss">
 .el-aside {
   --el-aside-width: var(--v3-aside-width);
-  transition: width linear 300ms;
-  box-shadow: 0 0 8px #e6e6e6;
+
   background-color: #fff;
+  box-shadow: 0 0 8px #e6e6e6;
+  transition: width linear 300ms;
   user-select: none;
 }
 
 .aside {
   &__title {
     @extend .flex-hcenter;
+
     padding-left: 0;
   }
 
@@ -98,15 +100,16 @@ const handleMenu = (name: RouteRecordName) => {
 
   &-title {
     @extend .flex, .flex-vcenter;
-    justify-content: space-between;
+
     height: var(--v3-header-height);
     padding: 0 10px;
     font-weight: bold;
     border-bottom: 1px solid #e6e6e6;
+    justify-content: space-between;
 
     &__text {
-      white-space: nowrap;
       transition: width, opacity linear 300ms;
+      white-space: nowrap;
     }
 
     &__icon {

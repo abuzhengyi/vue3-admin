@@ -20,5 +20,3 @@ const props = defineProps<{
   list: any[]
 }>()
 </script>
-
-<style scoped lang="scss"></style>

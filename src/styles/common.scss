@@ -23,34 +23,26 @@
     .#{$padding}-#{$value} {
       @if $padding == p {
         padding: #{$value}px;
-      }
-      @if $padding == pt {
+      } @else if $padding == pt {
         padding-top: #{$value}px;
-      }
-      @if $padding == pr {
+      } @else if $padding == pr {
         padding-right: #{$value}px;
-      }
-      @if $padding == pb {
+      } @else if $padding == pb {
         padding-bottom: #{$value}px;
-      }
-      @if $padding == pl {
+      } @else if $padding == pl {
         padding-left: #{$value}px;
       }
     }
     .#{$margin}-#{$value} {
       @if $margin == m {
         margin: #{$value}px;
-      }
-      @if $margin == mt {
+      } @else if $margin == mt {
         margin-top: #{$value}px;
-      }
-      @if $margin == mr {
+      } @else if $margin == mr {
         margin-right: #{$value}px;
-      }
-      @if $margin == mb {
+      } @else if $margin == mb {
         margin-bottom: #{$value}px;
-      }
-      @if $margin == ml {
+      } @else if $margin == ml {
         margin-left: #{$value}px;
       }
     }
@@ -82,6 +74,7 @@
 /** hover */
 .hover {
   cursor: pointer;
+
   &:hover {
     color: var(--el-color-primary);
   }

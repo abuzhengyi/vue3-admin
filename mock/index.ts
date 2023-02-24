@@ -7,7 +7,7 @@ const { DEV, VITE_PROXY_SERVER, VITE_BASE_URL } = import.meta.env,
 
 const mockXHR = async () => {
   for (const module of modules) {
-    Object.values(await module()).forEach((mockData) => {
+    Object.values(await module()).forEach(mockData => {
       const { url, method = 'get', response } = <
         {
           url: string

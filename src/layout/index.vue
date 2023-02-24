@@ -29,5 +29,3 @@ const route = useRoute()
 // 菜单是否多层级
 const isMultilayer = computed(() => route.matched.length > 2)
 </script>
-
-<style scoped lang="scss"></style>

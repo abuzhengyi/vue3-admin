@@ -30,5 +30,3 @@ const messageConfig = reactive({
   max: 50
 })
 </script>
-
-<style scoped lang="scss"></style>

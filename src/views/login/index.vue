@@ -110,7 +110,7 @@ const autofocus = computed(() => form.account?.length)
 const loading = ref(false)
 const formRef = ref<FormInstance | null>(null)
 const handleLogin = async () => {
-  if (await formRef.value?.validate((valid) => valid)) {
+  if (await formRef.value?.validate(valid => valid)) {
     loading.value = true
     login(form)
       .catch(() => {
@@ -126,70 +126,90 @@ const handleLogin = async () => {
 <style scoped lang="scss">
 .login {
   @extend .flex;
+
   height: 100vh;
   overflow: hidden;
+
   &-left {
     @extend .flex, .flex-1, .pt-100, .pl-40;
-    flex-direction: column;
-    align-items: flex-start;
+
     position: relative;
     background: #f7faff url('@/assets/images/login/map.png') no-repeat 20% 80% / 100% 80%;
+    align-items: flex-start;
+    flex-direction: column;
   }
+
   &__logo {
     height: 40px;
     transform: translate3d(-8px, 0, 0);
   }
+
   &__title {
     @extend .mt-20;
+
     font-size: 26px;
     font-weight: bold;
   }
+
   &__describe {
     @extend .mt-20, .flex-1;
+
     width: 600px;
     font-size: 20px;
     color: var(--el-text-color-regular);
   }
+
   &__copyright {
     @extend .pb-10;
+
     font-size: var(--el-font-size-extra-small);
     color: var(--el-text-color-secondary);
   }
+
   &-right {
     position: relative;
     width: 30%;
     background: #0672ff url('@/assets/images/login/build.png') no-repeat 0 0 / 100% 100%;
   }
+
   &-form {
     @extend .p-20;
+
     position: absolute;
     top: 50%;
     left: 0;
     z-index: 2;
-    transform: translate3d(-50%, -50%, 0);
     width: 360px;
-    border-radius: 4px;
     background-color: #fff;
-    box-shadow: 0px 4px 20px 0px rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    transform: translate3d(-50%, -50%, 0);
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 10%);
+
     &-wrap {
       @extend .flex;
-      flex-direction: column;
+
       align-items: center;
+      flex-direction: column;
       height: 340px;
       padding-top: 40px;
     }
+
     &__title {
       font-size: var(--el-font-size-extra-large);
       font-weight: bold;
     }
+
     .form-item {
       width: 100%;
       margin: 0 0 38px;
+
       &-wrap {
         @extend .flex;
-        justify-content: space-between;
+
         flex: 1;
+        justify-content: space-between;
       }
+
       &-auto {
         margin: 50px 0 2px;
       }
