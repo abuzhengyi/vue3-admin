@@ -27,5 +27,5 @@ import LayoutFooter from '@/layout/components/Footer.vue'
 const route = useRoute()
 
 // 菜单是否多层级
-const isMultilayer = computed(() => route.matched.length > 2)
+const isMultilayer = computed(() => route.path.split('/').length > 2)
 </script>

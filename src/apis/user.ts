@@ -7,7 +7,7 @@ export interface LoginData {
   password: string
 }
 
-export const sendLogin = ({ account, password }: LoginData) => {
+export const loginApi = ({ account, password }: LoginData) => {
   password &&= md5(password)
   return post('/login', {
     account,
@@ -16,4 +16,7 @@ export const sendLogin = ({ account, password }: LoginData) => {
 }
 
 /** 退出登录 */
-export const sendLogout = () => post('/logout')
+export const logoutApi = () => post('/logout')
+
+/** 获取用户信息 */
+export const getUserInfoApi = () => post('/user/info')

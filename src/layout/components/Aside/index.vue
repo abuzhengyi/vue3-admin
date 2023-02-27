@@ -52,8 +52,8 @@ const subtitle = ref()
 
 // 二级菜单列表
 const menuList = computed<RouteRecordRaw[]>(() => {
-  const routeParent = route.matched[1]
-  subtitle.value = routeParent.meta.subtitle || routeParent.meta.subtitle
+  const routeParent = route.matched[0]
+  subtitle.value = routeParent.meta.subtitle || routeParent.meta.title
   return routeParent.children
 })
 
