@@ -2,10 +2,8 @@
   <div class="login">
     <div class="login-left">
       <img class="login__logo" :src="logoUrl" alt="logo" />
-      <div class="login__describe">
-        一个基于 Vue3、 Element Plus、TypeScript、Vite、Pinia 等主流技术的后台管理系统基础解决方案.
-      </div>
-      <div class="login__copyright">Copyright &copy; 2022 版权所有xxx有限责任公司</div>
+      <div class="login__describe">{{ VITE_APP_DESCRIBE }}</div>
+      <layout-footer />
     </div>
     <div class="login-right">
       <div class="login-form">
@@ -64,7 +62,10 @@
 <script setup lang="ts">
 import { useUserStore } from '@/store/modules/user'
 import type { LoginData } from '@/apis/user'
+import LayoutFooter from '@/layout/components/Footer.vue'
 import logoUrl from '@/assets/images/common/logo-text.svg'
+
+const { VITE_APP_DESCRIBE } = import.meta.env
 
 const { login } = useUserStore()
 
@@ -110,7 +111,7 @@ const autofocus = computed(() => form.account?.length)
 const loading = ref(false)
 const formRef = ref<FormInstance | null>(null)
 const handleLogin = async () => {
-  if (await formRef.value?.validate(valid => valid)) {
+  if (await formRef.value?.validate((valid) => valid)) {
     loading.value = true
     login(form)
       .catch(() => {
@@ -157,13 +158,6 @@ const handleLogin = async () => {
     width: 600px;
     font-size: 20px;
     color: var(--el-text-color-regular);
-  }
-
-  &__copyright {
-    @extend .pb-10;
-
-    font-size: var(--el-font-size-extra-small);
-    color: var(--el-text-color-secondary);
   }
 
   &-right {

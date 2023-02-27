@@ -40,6 +40,7 @@ export default ({ command, mode }: ConfigEnv) => {
         : {},
     plugins: [
       vue(),
+      // html 插件
       createHtmlPlugin({
         // 在这里写 entry 后，你将不需要在`index.html`内添加 script 标签，原有标签需要删除
         entry: 'src/main.ts',
@@ -51,18 +52,18 @@ export default ({ command, mode }: ConfigEnv) => {
           }
         }
       }),
-      // 自动导入 Vue 、Element Plus 方法
+      // 自动导入 vue 、element-plus 方法
       AutoImport({
         imports: ['vue'],
         resolvers: [ElementPlusResolver()],
         dts: pathResolve('types/auto-imports.d.ts')
       }),
-      // 自动导入 Element Plus、Icon 组件
+      // 自动导入 element-plus、icon 组件
       Components({
         resolvers: [
           ElementPlusResolver(),
           IconsResolver({
-            // Iconify Json 图标库，ep 代表 Element Plus
+            // iconify 图标库，ep 代表 element-plus
             enabledCollections: ['ep'],
             // 图标前缀，默认 I
             prefix: 'Icon'
@@ -81,8 +82,7 @@ export default ({ command, mode }: ConfigEnv) => {
       },
       preprocessorOptions: {
         scss: {
-          // 导入全局 scss，多个 scss 文件可用`;`符号分隔
-          // 使用 @use 替代 @import，因为 sass 团队说他们最终会删除 @import 语法
+          // 导入全局 scss 使用 @use 替代 @import，因为 sass 团队说他们最终会删除 @import 语法
           additionalData: `
             @use "@/styles/element-theme.scss" as *;
             @use "@/styles/common.scss" as *;
@@ -93,7 +93,7 @@ export default ({ command, mode }: ConfigEnv) => {
       }
     },
     build: {
-      // 默认 'modules'，指支持原生 ES 模块的浏览器，最低 es2015
+      // 默认 'modules'，指支持原生 es 模块的浏览器，最低 es2015
       target: 'es2015',
       // 禁用 map 文件
       sourcemap: false,
