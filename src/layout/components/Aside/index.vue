@@ -30,6 +30,7 @@
 <script setup lang="ts">
 import { useRouter, useRoute, type RouteRecordRaw, type RouteRecordName } from 'vue-router'
 import { useAppStore } from '@/store/modules/app'
+import { getCssVar, debounce, throttle } from '@/utils'
 import SubMenu from './SubMenu.vue'
 
 const router = useRouter()
@@ -42,9 +43,16 @@ const props = defineProps<{
 
 /** aside 折叠 */
 const collapse = computed(() => appStore.collapse)
+const mainMinWidth = getCssVar('--v3-main-width-min')
 const handleCollapse = () => {
   appStore.setCollapse(!appStore.collapse)
 }
+const handleResize = () => {
+  appStore.setCollapse(+mainMinWidth > window.innerWidth)
+}
+onMounted(() => {
+  window.onresize = () => throttle(handleResize)
+})
 
 /** 二级 menu 菜单 */
 // 副标题
@@ -76,6 +84,7 @@ const handleMenu = (name: RouteRecordName) => {
   box-shadow: 0 0 8px #e6e6e6;
   transition: width linear 300ms;
   user-select: none;
+  overflow-x: hidden;
 }
 
 .aside {
