@@ -15,7 +15,7 @@ export const routes: RouteRecordRaw[] = [
     component: Layout,
     children: [
       {
-        path: 'home',
+        path: '/',
         name: 'home',
         component: () => import('@/views/home/index.vue'),
         meta: {

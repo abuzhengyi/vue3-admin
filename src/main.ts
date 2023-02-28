@@ -8,14 +8,13 @@ import store from './store'
 import router from './router'
 import './router/permission'
 
+/** directives */
+import directivePlugin from '@/directives'
+
 /** styles */
 import './styles'
 
 const app = createApp(App)
-
-/** directives */
-import directives from '@/directives'
-directives(app)
 
 /** icons */
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
@@ -23,4 +22,4 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(`IconEp${key}`, component)
 }
 
-app.use(store).use(router).mount('#app')
+app.use(store).use(router).use(directivePlugin).mount('#app')

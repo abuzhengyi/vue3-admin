@@ -2,7 +2,7 @@ import type { Directive } from 'vue'
 import { useUserStoreHook } from '@/store/modules/user'
 
 /** 权限指令 */
-export const permission: Directive = {
+export default <Directive>{
   mounted(el, binding) {
     const { value } = binding
     const roles = useUserStoreHook().roles
