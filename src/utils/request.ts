@@ -1,6 +1,7 @@
 import axios, { toFormData, formToJSON } from 'axios'
 import type { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, AxiosError } from 'axios'
 import router from '@/router'
+import cache from '@/utils/cache'
 
 const { DEV, VITE_PROXY_SERVER, VITE_BASE_URL } = import.meta.env,
   baseURL = DEV && VITE_PROXY_SERVER === 'true' ? '/api' : VITE_BASE_URL
@@ -16,6 +17,7 @@ const axiosInstance = axios.create({
 /** 请求拦截 */
 axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
+    console.log('request url =', config.url)
     const { headers, method, data } = config
 
     // FormData
@@ -27,7 +29,7 @@ axiosInstance.interceptors.request.use(
       config.data = toFormData(data, new FormData())
 
       // token
-    ;(<AxiosRequestHeaders>config.headers)['Authorization'] = 'token'
+    ;(<AxiosRequestHeaders>config.headers)['Authorization'] = `token ${cache.get('token')}`
 
     return config
   },
@@ -39,7 +41,7 @@ axiosInstance.interceptors.request.use(
 /** 响应拦截 */
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse) => {
-    console.log('response =', response)
+    console.log('response data =', response.data)
     const {
       data: { code, message = '请求失败', data = {} }
     } = response

@@ -17,10 +17,15 @@ DEV && VITE_MOCK_SERVER === 'true' && mockXHR()
 import './styles'
 
 const app = createApp(App)
-app.use(store).use(router).mount('#app')
 
-/** icon */
+/** directives */
+import directives from '@/directives'
+directives(app)
+
+/** icons */
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(`IconEp${key}`, component)
 }
+
+app.use(store).use(router).mount('#app')

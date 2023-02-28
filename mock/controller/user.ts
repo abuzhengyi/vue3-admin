@@ -1,11 +1,16 @@
+import cache from '../../src/utils/cache'
+
 export const login = {
   url: '/login',
   method: 'post',
-  response: {
-    code: 200,
-    message: 'success',
-    data: {
-      token: 'ki98hgh09gfjksiwutryw'
+  response: ({ body }) => {
+    const { account, password } = JSON.parse(body)
+    return {
+      code: 200,
+      message: 'success',
+      data: {
+        token: `${account + password}`
+      }
     }
   }
 }
@@ -22,14 +27,30 @@ export const logout = {
 export const userInfo = {
   url: '/user/info',
   method: 'post',
-  response: {
-    code: 200,
-    message: 'success',
-    data: {
-      name: 'admin',
-      account: 'admin',
-      avatar: '',
-      roles: ['admin']
+  response: () => {
+    const token = <string>cache.get('token')
+    let data = {}
+    if (/^admin.*/.test(token)) {
+      data = {
+        name: 'admin',
+        account: 'admin',
+        avatar: '',
+        roles: ['admin', 'editor']
+      }
+    } else if (/^editor.*/.test(token)) {
+      data = {
+        name: 'editor',
+        account: 'editor',
+        avatar: '',
+        roles: ['editor']
+      }
+    } else {
+      data = {}
+    }
+    return {
+      code: 200,
+      message: 'success',
+      data
     }
   }
 }

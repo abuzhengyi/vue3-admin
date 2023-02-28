@@ -80,8 +80,8 @@ const rules = reactive({
     },
     {
       validator: (rule: any, value: string, callback: any) => {
-        if (!/^\w{6,14}$/.test(value)) {
-          callback(new Error('账号应以字母开头，长度6-14位的大小写字母、数字、下划线组合'))
+        if (!/^(admin|editor)$/.test(value)) {
+          callback(new Error('请输入 admin 或 editor 体验功能'))
         } else {
           callback()
         }

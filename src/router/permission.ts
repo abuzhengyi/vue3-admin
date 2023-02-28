@@ -61,10 +61,14 @@ router.beforeEach(async (to, from, next) => {
   if (user.token.length) {
     // 刷新页面 || 从登录页进
     if (from.name === void 0 || from.name === 'login') {
-      // 获取用户信息
-      const { roles } = await userStore.getUserInfo()
-      // 设置动态路由
-      setAsyncRoutes(roles)
+      try {
+        // 获取用户信息
+        const { roles } = await userStore.getUserInfo()
+        // 设置动态路由
+        setAsyncRoutes(roles)
+      } catch {
+        // ...
+      }
     }
   } else {
     // 非登陆页 && 无 token
