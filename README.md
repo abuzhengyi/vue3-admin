@@ -58,7 +58,7 @@ cd v3-admin
 npm i --registry=https://registry.npm.taobao.org
 
 # 启动服务
-npm dev
+npm run dev
 ```
 
 ### 打包

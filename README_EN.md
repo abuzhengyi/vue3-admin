@@ -58,7 +58,7 @@ cd v3-admin
 npm i
 
 # Start the service
-npm dev
+npm run dev
 ```
 
 ### Build
