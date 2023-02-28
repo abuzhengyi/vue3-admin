@@ -9,7 +9,7 @@ import defaultAvatar from '@/assets/images/user/avatar.png'
 
 export const useUserStore = defineStore('user', () => {
   const name = ref('')
-  const avatar = ref('' || defaultAvatar)
+  const avatar = ref('')
   const account = ref('')
   const token = ref(<string>cache.get('token') || '')
   const roles = ref<string[]>([])
@@ -19,11 +19,13 @@ export const useUserStore = defineStore('user', () => {
     try {
       const res = await loginApi(data)
       token.value = res.token
+      // 缓存 token
       cache.set('token', res.token)
       ElMessage({
         type: 'success',
         message: '登录成功'
       })
+      // 跳转首页
       router.replace({
         name: 'home'
       })
@@ -37,8 +39,15 @@ export const useUserStore = defineStore('user', () => {
   const logout = () => {
     logoutApi().then(
       () => {
+        // 重置动态路由
         resetRoutes()
+        // 清除数据
+        name.value = ''
+        avatar.value = ''
+        account.value = ''
+        roles.value = []
         cache.remove('token')
+        // 跳转登录页
         router.replace({
           name: 'login'
         })
@@ -54,7 +63,7 @@ export const useUserStore = defineStore('user', () => {
     try {
       const res = await getUserInfoApi()
       name.value = res.name
-      res.avatar && (avatar.value = res.avatar)
+      avatar.value = res.avatar || defaultAvatar
       account.value = res.account
       roles.value = res.roles
       return res
