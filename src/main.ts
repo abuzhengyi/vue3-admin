@@ -8,11 +8,6 @@ import store from './store'
 import router from './router'
 import './router/permission'
 
-/** mock，开发环境下开启 */
-import mockXHR from '../mock'
-const { DEV, VITE_MOCK_SERVER } = import.meta.env
-DEV && VITE_MOCK_SERVER === 'true' && mockXHR()
-
 /** styles */
 import './styles'
 

@@ -1,6 +1,5 @@
 export const noticeList = {
   url: '/notice/list',
-  method: 'post',
   response: {
     code: 200,
     message: 'success',
@@ -14,7 +13,6 @@ export const noticeList = {
 
 export const statisticsList = {
   url: '/statistics/list',
-  method: 'post',
   response: {
     code: 200,
     message: 'success',

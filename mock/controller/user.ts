@@ -2,7 +2,6 @@ import cache from '../../src/utils/cache'
 
 export const login = {
   url: '/login',
-  method: 'post',
   response: ({ body }) => {
     const { account, password } = JSON.parse(body)
     return {
@@ -17,7 +16,6 @@ export const login = {
 
 export const logout = {
   url: '/logout',
-  method: 'post',
   response: {
     code: 200,
     message: 'success'
@@ -26,7 +24,6 @@ export const logout = {
 
 export const userInfo = {
   url: '/user/info',
-  method: 'post',
   response: () => {
     const token = <string>cache.get('token')
     let data = {}
