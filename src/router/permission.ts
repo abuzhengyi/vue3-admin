@@ -1,4 +1,4 @@
-import type { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw, RouteRecordName } from 'vue-router'
 import router, { asyncRoutes } from '@/router'
 import { useUserStoreHook } from '@/store/modules/user'
 import NProgress from 'nprogress'
@@ -57,27 +57,29 @@ router.beforeEach(async (to, from, next) => {
   const userStore = useUserStoreHook()
   // 开始进度条
   NProgress.start()
-
+  // 是否已登录
   if (user.token.length) {
-    // 刷新页面 || 从登录页进
-    if (from.name === void 0 || from.name === 'login') {
-      try {
-        // 获取用户信息
-        const { roles } = await userStore.getUserInfo()
-        // 设置动态路由
-        setAsyncRoutes(roles)
-      } catch {
-        // ...
+    // 检查用户是否已获得其权限角色
+    if (!userStore.roles.length) {
+      // 刷新页面 || 从登录页进入
+      if (from.name === void 0 || from.name === 'login') {
+        try {
+          // 获取用户信息
+          const { roles } = await userStore.getUserInfo()
+          // 设置动态路由
+          setAsyncRoutes(roles)
+          // 导航到动态路由，注意：直接使用 `next()` 会查找不到动态路由
+          next(to.fullPath)
+          return
+        } catch {
+          // ...
+        }
       }
     }
-  } else {
-    // 非登陆页 && 无 token
-    if (to.name !== 'login') {
-      next({
-        name: 'login'
-      })
-      return
-    }
+    // 非登陆页 && 未登录
+  } else if (to.name !== 'login') {
+    next({ name: 'login' })
+    return
   }
 
   next()
