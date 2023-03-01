@@ -63,6 +63,7 @@
 import { useUserStore } from '@/store/modules/user'
 import type { LoginData } from '@/apis/user'
 import LayoutFooter from '@/layout/components/Footer.vue'
+import { regValidator } from '@/utils'
 import logoUrl from '@/assets/images/common/logo-text.svg'
 
 const { VITE_APP_DESCRIBE } = import.meta.env
@@ -80,7 +81,7 @@ const rules = reactive({
     },
     {
       validator: (rule: any, value: string, callback: any) => {
-        if (!/^(admin|editor)$/.test(value)) {
+        if (!regValidator('account', value)) {
           callback(new Error('请输入 admin 或 editor 体验功能'))
         } else {
           callback()
@@ -97,7 +98,7 @@ const rules = reactive({
     },
     {
       validator: (rule: any, value: string, callback: any) => {
-        if (!/^\w{6,14}$/.test(value)) {
+        if (!regValidator('password', value)) {
           callback(new Error('密码长度应为6-14位，且仅包含大小写字母、数字、下划线'))
         } else {
           callback()
