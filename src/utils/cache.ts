@@ -8,8 +8,8 @@ interface ThisContent {
   removeAll: () => void
 }
 
-/** 持久化存储构造函数 Cache */
-function Cache(this: ThisContent, storage = localStorage) {
+/** 持久化存储 */
+const Cache: unknown = function (this: ThisContent, storage = localStorage) {
   // 获取存储的 key
   const { VITE_CACHE_PREFIX } = import.meta.env
   const getKey = (name: string) => `${VITE_CACHE_PREFIX}-${name}`.toUpperCase()
@@ -53,6 +53,6 @@ function Cache(this: ThisContent, storage = localStorage) {
   }
 }
 
-const cacheInstance: ThisContent = new (<any>Cache)()
+const cacheInstance = new (<new (storage?: Storage) => ThisContent>Cache)()
 
 export default cacheInstance

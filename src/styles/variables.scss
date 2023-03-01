@@ -1,8 +1,13 @@
+/** 全局 css 变量，在 js 中获取这些变量请使用 utils 中的 getCssVar 方法 */
 :root {
-  /** 布局容器 */
+  // aside 宽度
   --v3-aside-width: 200px;
+  // aside 折叠后的宽度
   --v3-aside-width-collapse: 64px;
+  // header 高度
   --v3-header-height: 64px;
+  // 主体内容的最小宽度，视口宽度小于此阈值时 aside 将折叠
   --v3-main-width-min: 700px;
-  --v3-footer-height: 100px;
+  // footer 高度
+  --v3-footer-height: 80px;
 }

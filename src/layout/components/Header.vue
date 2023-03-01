@@ -94,7 +94,7 @@ const handleDropdown = (command: string) => {
 
 /** 一级 tab 菜单 */
 // 一级菜单列表
-const menuList = computed<any[]>(() => router.getRoutes().filter(item => item.meta?.menu))
+const menuList = computed<any[]>(() => router.getRoutes().filter((item) => item.meta?.menu))
 
 // 当前激活菜单 name
 const activeMenu = computed<any>(() => {
@@ -120,7 +120,7 @@ const handleMenu = (pane: TabsPaneContext) => {
 
   @extend .flex, .flex-vcenter, .pr-20;
 
-  z-index: 1001;
+  z-index: 1;
   padding-left: 0;
   background-color: #fff;
   border-bottom: 1px solid #e6e6e6;
