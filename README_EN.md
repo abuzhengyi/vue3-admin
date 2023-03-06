@@ -1,5 +1,4 @@
 <div align="center">
-  <img alt="V3 Admin Logo" width="120" height="120" src="./src/assets/images/common/logo.svg">
   <h1>V3 Admin</h1>
   <span><a href="./README.md"> 中文</a> | English<span>
 </div>
@@ -49,10 +48,10 @@ npm -v
 
 ```bash
 # Clone project
-git clone https://github.com/abuzhengyi/v3-admin.git
+git clone https://github.com/abuzhengyi/vue3-admin.git
 
 # Enter the project directory
-cd v3-admin
+cd vue3-admin
 
 # Install dependencies
 npm i

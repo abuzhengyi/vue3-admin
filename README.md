@@ -1,5 +1,4 @@
 <div align="center">
-  <img alt="V3 Admin Logo" width="120" height="120" src="./src/assets/images/common/logo.svg">
   <h1>V3 Admin</h1>
   <span>中文 | <a href="./README_EN.md">English</a><span>
 </div>
@@ -49,10 +48,10 @@ npm -v
 
 ```bash
 # 克隆项目
-git clone https://github.com/abuzhengyi/v3-admin.git
+git clone https://github.com/abuzhengyi/vue3-admin.git
 
 # 进入项目目录
-cd v3-admin
+cd vue3-admin
 
 # 安装依赖（国内用户推荐使用淘宝镜像安装）
 npm i --registry=https://registry.npm.taobao.org
