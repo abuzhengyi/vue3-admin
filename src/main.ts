@@ -8,6 +8,10 @@ import store from './store'
 import router from './router'
 import './router/permission'
 
+/** mockjs */
+import mockXHR from '../mock'
+mockXHR()
+
 /** directives */
 import directives from '@/directives'
 

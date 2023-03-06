@@ -2,7 +2,6 @@ import axios, { toFormData, formToJSON } from 'axios'
 import type { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, AxiosError } from 'axios'
 import router from '@/router'
 import cache from '@/utils/cache'
-import mockXHR from '../../mock'
 
 const { DEV, VITE_PROXY_SERVER, VITE_BASE_URL } = import.meta.env,
   baseURL = DEV && VITE_PROXY_SERVER === 'true' ? '/api' : VITE_BASE_URL
@@ -17,12 +16,9 @@ const axiosInstance = axios.create({
 
 /** 请求拦截 */
 axiosInstance.interceptors.request.use(
-  async (config: AxiosRequestConfig) => {
+  (config: AxiosRequestConfig) => {
     console.log('request url =', config.url)
     const { headers, method, url, data } = config
-
-    // 注册 mock 拦截
-    await mockXHR(url, method)
 
     // FormData
     if (

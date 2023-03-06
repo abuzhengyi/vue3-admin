@@ -1,5 +1,6 @@
 import type { RouteRecordRaw, RouteRecordName } from 'vue-router'
 import router, { asyncRoutes } from '@/router'
+import mockXHR from '../../mock'
 import { useUserStoreHook } from '@/store/modules/user'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -62,8 +63,10 @@ router.beforeEach(async (to, from, next) => {
     // 检查用户是否已获得其权限角色
     if (!userStore.roles.length) {
       // 刷新页面 || 从登录页进入
-      if (from.name === void 0 || from.name === 'login') {
+      if (!from.name || from.name === 'login') {
         try {
+          // 刷新页面先注册 mock，否则拦截下面的用户信息接口会失败
+          if (!from.name) await mockXHR()
           // 获取用户信息
           const { roles } = await userStore.getUserInfo()
           // 设置动态路由
